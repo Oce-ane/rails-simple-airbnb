@@ -1,0 +1,40 @@
+<div class="container">
+  <div class="header p-2 m-2">
+    <h1>What AirBnB would look like if it was coded by a baby!</h1>
+  </div>
+  <div class="flats">
+  <% @flats.each do |flat| %>
+      <div class="card d-flex">
+        <div class="card-img mb-3 flex-grow-1">
+          <img src="https://source.unsplash.com/random/?flat" alt="Random picture" style="width: 100%">
+        </div>
+        <div class="card-content">
+          <div class="card-title">
+            <h4><%= link_to flat.name, flat_path(flat) %></h4>
+          </div>
+            <p><%= flat.address %></p>
+          <div class="d-flex mb-4">
+            <div class="d-flex align-items-center p-1">
+              <i class="fa-solid fa-people-line p-1"></i>
+              <span>  <%= flat.number_of_guests %>   </span>
+            </div>
+            <div class="d-flex align-items-center p-1">
+              <i class="fa-solid fa-euro-sign p-1"></i>
+              <span><%= flat.price_per_night %></span>
+            </div>
+          </div>
+        </div>
+          <div class="card-action flex-shrink-1 pt-3 border-top d-flex justify-content-center">
+            <%= link_to 'More info', flat_path(flat) %>
+            <%= link_to edit_flat_path(flat) do %>
+              <i class="fa fa-pencil"></i>
+            <% end %>
+            <%= link_to flat_path(flat),
+              data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } do %>
+              <i class="fa-solid fa-trash"></i>
+            <% end %>
+          </div>
+      </div>
+    <% end %>
+    </div>
+</div>

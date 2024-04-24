@@ -1,0 +1,34 @@
+<div class="show-container p-2 m-2" style="width: 75vh">
+  <div class="card img p-2 m-2">
+    <img src="https://source.unsplash.com/random/?flat" alt="Random picture" style="width: 100%">
+  </div>
+  <div class="card header p-2 m-2">
+    <h2><%= @flat.name %></h2>
+    <p><%= @flat.address %></p>
+  </div>
+  <div class="card content p-2 m-2">
+    <h4>A little bit more about this place</h4>
+    <p><%= @flat.description %></p>
+  </div>
+  <div class="card details p-2 m-2">
+    <div class="d-flex">
+            <div class="d-flex align-items-center p-1">
+              <i class="fa-solid fa-people-line p-1"></i>
+              <span>  <%= @flat.number_of_guests %>   </span>
+            </div>
+            <div class="d-flex align-items-center p-1">
+              <i class="fa-solid fa-euro-sign p-1"></i>
+              <span><%= @flat.price_per_night %></span>
+            </div>
+          </div>
+  </div>
+  <div class="action">
+    <%= link_to edit_flat_path(@flat) do %>
+      <i class="fa fa-pencil"></i>
+    <% end %>
+    <%= link_to flat_path(@flat),
+      data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } do %>
+      <i class="fa-solid fa-trash"></i>
+    <% end %>
+  </div>
+</div>
